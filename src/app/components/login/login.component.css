@@ -30,7 +30,6 @@ body{
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-    margin-left: 200px;
 }
 
 .login-content{
@@ -38,7 +37,7 @@ body{
 	justify-content: flex-start;
 	align-items: center;
 	text-align: center;
-    margin-left: 400px;
+    margin-left: 200px;
 }
 
 .img img{
@@ -206,7 +205,16 @@ a:hover{
 }
 
 
-@media screen and (max-width: 1050px){
+@media screen and (min-width: 1450px){
+
+	.img{
+		margin-left: 200px;
+	}
+
+	.login-content{
+		margin-left: 500px;
+	}
+
 	.container{
 		grid-gap: 5rem;
 	}
