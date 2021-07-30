@@ -8,30 +8,31 @@
             <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
               <h4>Motoristas</h4>
             </h5>
-            <li class="nav-item"><div class="nav-link">Lista de Motoristas</div></li>
-            <li class="nav-item"><div class="nav-link">Solicitudes</div></li>
+            <li class="nav-item"><a routerLink="/motoristas" class="nav-link">Lista de Motoristas</a></li>
+            <li class="nav-item"><a routerLink="/solicitudes-motoristas" class="nav-link">Solicitudes</a></li>
           </ul>
   
           <ul class="nav flex-column">
             <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
               <h4>Restaurantes</h4>
             </h5>
-            <li class="nav-item"><div class="nav-link">Lista de Restaurantes</div></li>
-            <li class="nav-item"><div class="nav-link">Agregar nuevo Restaurante</div></li>
+            <li class="nav-item"><a routerLink="/restaurantes" class="nav-link">Lista de Restaurantes</a></li>
+            <li class="nav-item"><a routerLink="/nuevo-restaurante" class="nav-link">Agregar nuevo Restaurante</a></li>
           </ul>
 
           <ul class="nav flex-column">
             <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
               <h4>Pedidos</h4>
             </h5>
-            <li class="nav-item"><div class="nav-link">Pedidos Entregados</div></li>
-            <li class="nav-item"><div class="nav-link">Pedidos Cancelados</div></li>
+            <li class="nav-item"><a routerLink="/pedidos/entregados" class="nav-link">Pedidos Entregados</a></li>
+            <li class="nav-item"><a routerLink="/pedidos/cancelados" class="nav-link">Pedidos Cancelados</a></li>
           </ul>
 
         </div>
       </nav>
       <div class="col-md-10">
-            <h2 class="mt-3">¡Bienvenido Administrador!</h2>
+        <div class="container-fluid">
+          <h2 class="mt-3">¡Bienvenido Administrador!</h2>
             <h5>Esta es la lista de pedidos que se ha realizado durante la ultima hora</h5>
             <table class="table table-bordered mt-4">
                 <thead>
@@ -79,6 +80,8 @@
                   </tr>
                 </tbody>
               </table>
+        </div>
+            
       </div>
     </div>
   </div>
