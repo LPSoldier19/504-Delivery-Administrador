@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { faCheck, faBan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-solicitudes-motoristas',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolicitudesMotoristasComponent implements OnInit {
 
-  constructor() { }
+  faCheck = faCheck;
+  faBan = faBan;
+
+  constructor(private title:Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle('504 Delivery - Solicitudes')
   }
 
 }

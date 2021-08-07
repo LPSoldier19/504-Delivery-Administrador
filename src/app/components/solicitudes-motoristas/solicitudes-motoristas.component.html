@@ -1,1 +1,44 @@
-<p>solicitudes-motoristas works!</p>
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <app-sidebar></app-sidebar>
+        <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="container-fluid">
+              <h2 class="mt-5 pt-5">Motoristas</h2>
+                <h5>Listado de los motoristas que estan trabajando con 504 Delivery</h5>
+                <table class="table table-bordered mt-4">
+                    <thead>
+                      <tr class="text-center">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">No. Identidad</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                      <tr>
+                        <td>Rafael</td>
+                        <td>Bautista</td>
+                        <td>rafael.bautista1@hotmail.es</td>
+                        <td>9520-2808</td>
+                        <td>0801-1998-05705</td>
+                        <td style="width: 120px;"><button class="btn btn-link"><fa-icon [icon]="faCheck"></fa-icon></button><button class="btn btn-link"><fa-icon [icon]="faBan"></fa-icon></button></td>
+                      </tr>
+                      <tr>
+                        <td>Rafael</td>
+                        <td>Bautista</td>
+                        <td>rafael.bautista1@hotmail.es</td>
+                        <td>9520-2808</td>
+                        <td>0801-1998-05705</td>
+                        <td style="width: 120px;"><button class="btn btn-link"><fa-icon [icon]="faCheck"></fa-icon></button><button class="btn btn-link"><fa-icon [icon]="faBan"></fa-icon></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+                
+          </div>
+    </div>
+</div>

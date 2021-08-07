@@ -1,0 +1,15 @@
+#td-descripcion-producto{
+    width: 10%;
+    word-break: break-all;
+}
+
+.edit{
+    color: rgb(238, 223, 20);
+    outline: none;
+    text-decoration: none;
+}
+.erase{
+    color: rgb(211, 37, 37);
+    outline: none;
+    text-decoration: none;
+}
