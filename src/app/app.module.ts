@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,9 @@ import { ListaRestaurantesComponent } from './components/lista-restaurantes/list
 import { AgregarRestauranteComponent } from './components/agregar-restaurante/agregar-restaurante.component';
 import { PedidosEntregadosComponent } from './components/pedidos-entregados/pedidos-entregados.component';
 import { PedidosCanceladosComponent } from './components/pedidos-cancelados/pedidos-cancelados.component';
+import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +38,11 @@ import { PedidosCanceladosComponent } from './components/pedidos-cancelados/pedi
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AuthGuard, {provide:HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

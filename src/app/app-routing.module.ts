@@ -9,15 +9,17 @@ import { PedidosCanceladosComponent } from './components/pedidos-cancelados/pedi
 import { PedidosEntregadosComponent } from './components/pedidos-entregados/pedidos-entregados.component';
 import { SolicitudesMotoristasComponent } from './components/solicitudes-motoristas/solicitudes-motoristas.component';
 
+import { AuthGuard } from './auth.guard';
+
 const routes: Routes = [
   { path:'', component:LoginComponent},
-  { path:'home', component:MainComponent},
-  { path:'motoristas', component:ListaMotoristasComponent},
-  { path: 'solicitudes-motoristas', component:SolicitudesMotoristasComponent},
-  { path: 'restaurantes', component: ListaRestaurantesComponent},
-  { path: 'nuevo-restaurante', component: AgregarRestauranteComponent},
-  { path: 'pedidos/entregados', component: PedidosEntregadosComponent},
-  { path: 'pedidos/cancelados', component: PedidosCanceladosComponent}
+  { path:'home', component:MainComponent, canActivate:[AuthGuard]},
+  { path:'motoristas', component:ListaMotoristasComponent, canActivate:[AuthGuard]},
+  { path: 'solicitudes-motoristas', component:SolicitudesMotoristasComponent, canActivate:[AuthGuard]},
+  { path: 'restaurantes', component: ListaRestaurantesComponent, canActivate:[AuthGuard]},
+  { path: 'nuevo-restaurante', component: AgregarRestauranteComponent, canActivate:[AuthGuard]},
+  { path: 'pedidos/entregados', component: PedidosEntregadosComponent, canActivate:[AuthGuard]},
+  { path: 'pedidos/cancelados', component: PedidosCanceladosComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({

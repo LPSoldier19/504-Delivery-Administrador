@@ -2,7 +2,7 @@
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/home"><img src="../../../assets/images/logos/Logo-Outline-White.png" style="width: 50px;">504 Delivery</a>
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-usuarios">Cerrar Sesion</a>
+        <button class="btn btn-link" (click)="authService.logOut()" data-toggle="modal" data-target="#modal-usuarios">Cerrar Sesion</button>
       </li>
     </ul>
 </nav>
