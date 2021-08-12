@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private URL = "http://localhost:8888/administrador"
+  private URLAdmin = "http://localhost:8888/administrador";
 
   constructor(private http: HttpClient, private router: Router) { }
 
   login(admin:any){
-    return this.http.post<any>(this.URL, admin);
+    return this.http.post<any>(this.URLAdmin, admin);
   }
 
   loggedIn():Boolean{
