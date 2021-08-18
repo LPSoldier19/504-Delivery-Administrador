@@ -30,6 +30,7 @@ export class AuthService {
 
   logOut(){
     localStorage.removeItem('token');
+    localStorage.removeItem('adminID');
     this.router.navigate(['']);
   }
 }
