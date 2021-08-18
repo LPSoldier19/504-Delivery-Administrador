@@ -19,21 +19,13 @@
                       </tr>
                     </thead>
                     <tbody class="text-center">
-                      <tr>
-                        <td>Rafael</td>
-                        <td>Bautista</td>
-                        <td>rafael.bautista1@hotmail.es</td>
-                        <td>9520-2808</td>
-                        <td>0801-1998-05705</td>
-                        <td style="width: 120px;"><button class="btn btn-link"><fa-icon [icon]="faCheck"></fa-icon></button><button class="btn btn-link"><fa-icon [icon]="faBan"></fa-icon></button></td>
-                      </tr>
-                      <tr>
-                        <td>Rafael</td>
-                        <td>Bautista</td>
-                        <td>rafael.bautista1@hotmail.es</td>
-                        <td>9520-2808</td>
-                        <td>0801-1998-05705</td>
-                        <td style="width: 120px;"><button class="btn btn-link"><fa-icon [icon]="faCheck"></fa-icon></button><button class="btn btn-link"><fa-icon [icon]="faBan"></fa-icon></button></td>
+                      <tr *ngFor="let solicitud of solicitudes">
+                        <td>{{solicitud.nombre}}</td>
+                        <td>{{solicitud.apellido}}</td>
+                        <td>{{solicitud.correo}}</td>
+                        <td>{{solicitud.telefono}}</td>
+                        <td>{{solicitud.identidad}}</td>
+                        <td style="width: 120px;"><button class="btn btn-link" (click)="aceptarSolicitud(solicitud._id)"><fa-icon [icon]="faCheck"></fa-icon></button><button class="btn btn-link" (click)="negarSolicitud(solicitud._id)"><fa-icon [icon]="faBan"></fa-icon></button></td>
                       </tr>
                     </tbody>
                   </table>

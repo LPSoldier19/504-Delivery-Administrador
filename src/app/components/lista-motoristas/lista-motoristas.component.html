@@ -5,8 +5,8 @@
         <app-sidebar></app-sidebar>
         <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="container-fluid">
-              <h2 class="mt-5 pt-5">Motoristas</h2>
-                <h5>Listado de los motoristas que estan trabajando con 504 Delivery</h5>
+              <h2 class="mt-5 pt-5">Solicitudes</h2>
+                <h5>Listado de las solicitudes de los motoristas que desean trabajar con 504 Delivery</h5>
                 <table class="table table-bordered mt-4">
                     <thead>
                       <tr class="text-center">
@@ -16,27 +16,16 @@
                         <th scope="col">Correo</th>
                         <th scope="col">Teléfono</th>
                         <th scope="col">No. Identidad</th>
-                        <th scope="col">Pedidos</th>
                       </tr>
                     </thead>
                     <tbody class="text-center">
-                      <tr>
-                        <th scope="row">0001</th>
-                        <td>Rafael</td>
-                        <td>Bautista</td>
-                        <td>rafael.bautista1@hotmail.es</td>
-                        <td>9520-2808</td>
-                        <td>0801-1998-05705</td>
-                        <td>50</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">0002</th>
-                        <td>Yuvini</td>
-                        <td>Flores</td>
-                        <td>yuvini.flores@gmail.com</td>
-                        <td>XXXX-XXXX</td>
-                        <td>XXXX-XXXX-XXXXX</td>
-                        <td>20</td>
+                      <tr *ngFor="let motorista of motoristas">
+                        <th scope="row">{{motorista._id}}</th>
+                        <td>{{motorista.nombre}}</td>
+                        <td>{{motorista.apellido}}</td>
+                        <td>{{motorista.correo}}</td>
+                        <td>{{motorista.telefono}}</td>
+                        <td>{{motorista.identidad}}</td>
                       </tr>
                     </tbody>
                   </table>

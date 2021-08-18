@@ -13,24 +13,15 @@
                         <th scope="col">ID</th>
                         <th scope="col">Restaurante</th>
                         <th scope="col">Productos</th>
-                        <th scope="col">Direccion Principal</th>
-                        <th scope="col">Teléfono</th>
+                        <th scope="col">Impuesto</th>
                       </tr>
                     </thead>
                     <tbody class="text-center">
-                      <tr (click)="verMenuRestaurante(restaurante)">
-                        <th scope="row">0001</th>
-                        <td>Little Caesar's</td>
-                        <td>15</td>
-                        <td>Colonia Alameda</td>
-                        <td>2222-2222</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">0001</th>
-                        <td>Little Caesar's</td>
-                        <td>15</td>
-                        <td>Colonia Alameda</td>
-                        <td>2222-2222</td>
+                      <tr (click)="verMenuRestaurante(restauranteMenu, restaurante._id)" *ngFor="let restaurante of restaurantes">
+                        <th scope="row">{{restaurante._id}}</th>
+                        <td>{{restaurante.nombreRestaurante}}</td>
+                        <td>{{restaurante.menu.length}}</td>
+                        <td>{{restaurante.impuesto}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -40,7 +31,7 @@
     </div>
 </div>
 
-<ng-template #restaurante let-modal>
+<ng-template #restauranteMenu let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Menu del Restaurante</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -48,24 +39,21 @@
       </button>
     </div>
     <div class="modal-body">
-      <table class="table table-bordered">
+      <table class="table table-bordered" id="table-productos">
           <thead>
             <tr class="text-center">
-                <th scope="col">ID</th>
-                <th scope="col">Producto</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Precio</th>
-                <th scope="col"></th>
+                <th scope="col-2">ID</th>
+                <th scope="col-2">Producto</th>
+                <th scope="col-4">Descripción</th>
+                <th scope="col-2">Precio</th>
               </tr>
           </thead>
           <tbody class="text-center">
-            <tr>
-                <th scope="row">0001</th>
-                <td>Pizza Pepperoni</td>
-                <td class="td-descripcion-producto">Hamburguesa iconica de la casa con Papas Medianas y Coca Cola Portatil
-                </td>
-                <td>L. 120.00</td>
-                <td style="width: 120px;"><button class="btn btn-link edit"><fa-icon [icon]="faPen"></fa-icon></button><button class="btn btn-link erase"><fa-icon [icon]="faTrash"></fa-icon></button></td>
+            <tr *ngFor="let producto of menu">
+                <th scope="row">{{producto._id}}</th>
+                <td style="width: 140px;">{{producto.nombreProducto}}</td>
+                <td class="td-descripcion-producto">{{producto.descripcion}}</td>
+                <td style="width: 100px;">L. {{producto.precio}}.00</td>
               </tr>
           </tbody>
       </table>
