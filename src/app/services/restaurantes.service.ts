@@ -16,4 +16,8 @@ export class RestaurantesService {
   obtenerMenuRestaurante(idRestaurante:any):Observable<any>{
     return this.http.get(`http://localhost:8888/restaurantes/${idRestaurante}/menu`,{});
   }
+
+  // agregarNuevoRestaurante():Observable<any>{
+
+  // }
 }

@@ -1,1 +1,36 @@
-<p>pedidos-entregados works!</p>
+
+  <app-navbar></app-navbar>
+  <div class="container-fluid">
+    <div class="row">
+      <app-sidebar></app-sidebar>
+      <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="container-fluid">
+          <h2 class="mt-5 pt-5">Pedidos Entregados</h2>
+            <h5>Esta es la lista de pedidos que se han entregado</h5>
+            <table class="table table-bordered mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">No. Pedido</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Motorista</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Restaurante</th>
+                    <th scope="col">Producto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let pedido of pedidosEntregados">
+                    <th scope="row">{{pedido._id}}</th>
+                    <td>{{pedido.cliente.nombreCliente}}</td>
+                    <td>{{pedido.motorista.nombreMotorista}}</td>
+                    <td>L. {{pedido.monto}}.00</td>
+                    <td>{{pedido.producto.nombreRestaurante}}</td>
+                    <td>{{pedido.producto.nombreProducto}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+            
+      </div>
+    </div>
+  </div>

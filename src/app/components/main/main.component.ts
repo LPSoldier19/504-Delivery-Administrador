@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { PedidosService } from 'src/app/services/pedidos.service';
 
 @Component({
   selector: 'app-main',
@@ -8,10 +9,21 @@ import { Title } from '@angular/platform-browser';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private title:Title) { }
+  pedidos:any=[];
+
+  constructor(private title:Title, private pedidosService:PedidosService) { }
 
   ngOnInit(): void {
     this.title.setTitle('504 Delivery - Pagina Principal')
+
+    this.pedidosService.obtenerUltimosPedidos().subscribe(
+      res=>{
+        this.pedidos=res;
+      },
+      error=>{
+        console.log(error);
+      }
+    )
   }
 
 }

@@ -30,12 +30,37 @@ export class SolicitudesMotoristasComponent implements OnInit {
     )
   }
 
+  verSolicitudes(){
+    this.motoristasService.obtenerSolicitudes().subscribe(
+      res=>{
+        this.solicitudes=res;
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
   aceptarSolicitud(idMotorista:any){
-    alert(`Aceptar solicitud de motorista con id ${idMotorista}`)
+    this.motoristasService.aceptarMotorista(idMotorista).subscribe(
+    res=>{
+      this.verSolicitudes();
+    },
+    error=>{
+      console.log(error);
+    }
+    )
   }
 
   negarSolicitud(idMotorista:any){
-    alert(`Negar solicitud de motorista con id ${idMotorista}`)
+    this.motoristasService.rechazarMotorista(idMotorista).subscribe(
+      res=>{
+        this.verSolicitudes();
+      },
+      error=>{
+        console.log(error);
+      }
+      )
   }
 
 }

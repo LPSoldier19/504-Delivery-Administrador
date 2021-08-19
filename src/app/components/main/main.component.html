@@ -15,41 +15,17 @@
                     <th scope="col">Motorista</th>
                     <th scope="col">Monto</th>
                     <th scope="col">Restaurante</th>
-                    <th scope="col">Hora del Pedido</th>
-                    <th scope="col">Hora de Entrega</th>
                     <th scope="col">Estado</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">0001</th>
-                    <td>Rafael Bautista</td>
-                    <td>Rafael Bautista</td>
-                    <td>L. 300.00</td>
-                    <td>Pizza Hut</td>
-                    <td>12:00</td>
-                    <td>12:45</td>
-                    <td>Entregado</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">0002</th>
-                    <td>Yuvini Flores</td>
-                    <td>Rafael Bautista</td>
-                    <td>L. 120.00</td>
-                    <td>KFC</td>
-                    <td>11:40</td>
-                    <td>--:--</td>
-                    <td>Cancelado</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">0003</th>
-                    <td>Rafael Bautista</td>
-                    <td>Yuvini Flores</td>
-                    <td>L. 250.00</td>
-                    <td>Burger King</td>
-                    <td>12:30</td>
-                    <td>--:--</td>
-                    <td>En Camino</td>
+                  <tr *ngFor="let pedido of pedidos">
+                    <th scope="row">{{pedido._id}}</th>
+                    <td>{{pedido.cliente.nombreCliente}}</td>
+                    <td>{{pedido.motorista.nombreMotorista}}</td>
+                    <td>L. {{pedido.monto}}.00</td>
+                    <td>{{pedido.producto.nombreRestaurante}}</td>
+                    <td>{{pedido.estado}}</td>
                   </tr>
                 </tbody>
               </table>
