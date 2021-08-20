@@ -3,14 +3,24 @@
 <div class="container-fluid">
     <div class="row">
         <app-sidebar></app-sidebar>
-        <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="container-fluid">
+        <div class="col-md-9 ml-sm-auto col-lg-10 px-4 ">
+            <div class="container-fluid text-center">
               <h2 class="mt-5 pt-5">Nuevo Restaurante</h2>
-              <h5>Listado de los motoristas que estan trabajando con 504 Delivery</h5>
+              <h5>Agregar un nuevo Restaurante a nuestros catalogos</h5>
             </div>
-            <form action="">
-                
-            </form>
+            <div class="card" style="margin-left: 20%; margin-right: 20%; margin-top: 20px;">
+              <form class="my-3 mx-3" [formGroup]="formularioNuevoRestaurante" style="width: auto;">
+                <label class="my-1">Nombre Restaurante:</label>
+                <input type="text" formControlName="nombreRestaurante" class="form-control" placeholder="Nombren del Restaurante" required>
+                <label class="my-1">Icono:</label>
+                <input type="file" class="form-control-file" (input)="verImagen($event)"  required>
+                <label class="my-1">Impuesto:</label>
+                <input type="number" formControlName="impuesto" class="form-control" placeholder="Impuesto" min="30" required>
+              </form>
+              <div class="text-center my-4">
+                <button style="width: 50%;" class="btn btn-primary" (click)="agregarNuevoRestaurante()">Agregar Nuevo Restaurante</button>
+              </div>
+            </div>
                 
           </div>
     </div>

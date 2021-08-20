@@ -16,7 +16,7 @@ import { ListaRestaurantesComponent } from './components/lista-restaurantes/list
 import { AgregarRestauranteComponent } from './components/agregar-restaurante/agregar-restaurante.component';
 import { PedidosEntregadosComponent } from './components/pedidos-entregados/pedidos-entregados.component';
 import { PedidosCanceladosComponent } from './components/pedidos-cancelados/pedidos-cancelados.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
@@ -40,7 +40,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     NgbModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthGuard, {provide:HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi:true}],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Title } from '@angular/platform-browser';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { RestaurantesService } from 'src/app/services/restaurantes.service';
+import { FormControl, FormGroup, FormGroupName, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-lista-restaurantes',
@@ -17,8 +18,17 @@ export class ListaRestaurantesComponent implements OnInit {
   closeResult = '';
   restaurantes:any=[];
   menu:any=[];
+  restauranteSeleccionado:any;
+  imagen:any;
 
-  constructor(private modalMenuRestaurante: NgbModal, private restaurantesService:RestaurantesService, private title:Title) { }
+  formularioNuevoProducto = new FormGroup({
+    nombreProducto: new FormControl('', [Validators.required]),
+    descripcion: new FormControl('', [Validators.required]),
+    precio: new FormControl('', [Validators.required, Validators.min(50)]),
+    imagenProducto: new FormControl(null, [Validators.required])
+  });
+
+  constructor(private modalMenuRestaurante: NgbModal, private restaurantesService:RestaurantesService, private title:Title, private modalAgregarProducto: NgbModal) { }
 
   ngOnInit(): void {
     this.title.setTitle('504 Delivery - Restaurantes');
@@ -33,7 +43,20 @@ export class ListaRestaurantesComponent implements OnInit {
     )
   }
 
+  verRestaurantes(){
+    this.restaurantesService.obtenerRestaurantes().subscribe(
+      res=>{
+        this.restaurantes=res;
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+  }
+
   verMenuRestaurante(restaurante:any, restauranteSeleccionado:any) {
+
+    this.restauranteSeleccionado=restauranteSeleccionado;
 
     this.restaurantesService.obtenerMenuRestaurante(restauranteSeleccionado).subscribe(
       res=>{
@@ -51,6 +74,17 @@ export class ListaRestaurantesComponent implements OnInit {
     });
   }
 
+  agregarProducto(añadirProducto:any) {
+
+
+    this.modalAgregarProducto.open(añadirProducto, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
+  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -59,6 +93,35 @@ export class ListaRestaurantesComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  guardarNuevoProducto(){
+
+    let formData = new FormData();
+
+
+
+    formData.append('nombreProducto', this.formularioNuevoProducto.get('nombreProducto')?.value)
+    formData.append('descripcion', this.formularioNuevoProducto.get('descripcion')?.value)
+    formData.append('precio', this.formularioNuevoProducto.get('precio')?.value)
+    formData.append('imagenProducto', this.imagen)
+
+
+    this.restaurantesService.agregarNuevoProducto(this.restauranteSeleccionado, formData).subscribe(
+      res=>{
+        console.log(res);
+        this.modalAgregarProducto.dismissAll();
+        this.verRestaurantes();
+      },
+      error=>{
+        console.log(error);
+      }
+    )
+
+
+  }
+  verImagenProducto(evt:any){
+    this.imagen = evt.target.files[0];
   }
 
 }

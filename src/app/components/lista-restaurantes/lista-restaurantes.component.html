@@ -10,7 +10,6 @@
                 <table class="table table-bordered mt-4">
                     <thead>
                       <tr class="text-center">
-                        <th scope="col">ID</th>
                         <th scope="col">Restaurante</th>
                         <th scope="col">Productos</th>
                         <th scope="col">Impuesto</th>
@@ -18,7 +17,6 @@
                     </thead>
                     <tbody class="text-center">
                       <tr (click)="verMenuRestaurante(restauranteMenu, restaurante._id)" *ngFor="let restaurante of restaurantes">
-                        <th scope="row">{{restaurante._id}}</th>
                         <td>{{restaurante.nombreRestaurante}}</td>
                         <td>{{restaurante.menu.length}}</td>
                         <td>{{restaurante.impuesto}}</td>
@@ -59,7 +57,31 @@
       </table>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Agregar Nuevo Producto</button>
+      <button type="button" class="btn btn-outline-primary" (click)="agregarProducto(nuevoProducto)">Agregar Nuevo Producto</button>
+    </div>
+  </ng-template>
+
+  <ng-template #nuevoProducto let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Nuevo Producto</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formularioNuevoProducto">
+        <label for="">Nombre del Producto:</label>
+        <input type="text" formControlName="nombreProducto" name="nombre" class="form-control">
+        <label for="">Descripcion:</label>
+        <input type="text" formControlName="descripcion" class="form-control" name="" id="">
+        <label for="">Precio</label>
+        <input type="number" formControlName="precio" class="form-control">
+        <label for="">Imagen:</label>
+        <input type="file" class="form-control-file" (input)="verImagenProducto($event)" name="" id="">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary" (click)="guardarNuevoProducto()">Agregar Nuevo Producto</button>
     </div>
   </ng-template>
 
