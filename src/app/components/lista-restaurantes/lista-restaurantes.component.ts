@@ -24,7 +24,7 @@ export class ListaRestaurantesComponent implements OnInit {
   formularioNuevoProducto = new FormGroup({
     nombreProducto: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
-    precio: new FormControl('', [Validators.required, Validators.min(50)]),
+    precio: new FormControl(0, [Validators.required, Validators.min(50)]),
     imagenProducto: new FormControl(null, [Validators.required])
   });
 
